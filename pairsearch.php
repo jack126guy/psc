@@ -17,14 +17,14 @@ require('private/db.php');
 			}
 			//create array to hold results
 			$results = array();
-			if($sql->error()) {
-				echo '<p>Error: ' . $sql->error() . '</p>';
-				return;
-			}
 			//attempt to treat the first i characters as prefix
 			for($i=1; $i<strlen($_GET['name'])+1; $i++) {
 				//search preferred and alternate prefixes
 				$prefpfixquery = $sql->query('SELECT charname, charprefixpref FROM ' . $sql->format_table_name('characters') . ' WHERE charprefixpref LIKE "' . $sql->real_escape_string(substr($_GET['name'], 0, $i)) . '%"');
+				if($sql->error()) {
+					echo '<p>Error: ' . $sql->error() . '</p>';
+					return;
+				}
 				$altpfixquery = $sql->query('SELECT charname, charprefixalt FROM ' . $sql->format_table_name('characters') . ' WHERE charprefixalt LIKE "' . $sql->real_escape_string(substr($_GET['name'], 0, $i)) . '%"');
 				if($sql->error()) {
 					echo '<p>Error: ' . $sql->error() . '</p>';
