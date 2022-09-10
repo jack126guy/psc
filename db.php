@@ -28,6 +28,5 @@ class SQL {
 		return $this->mysqliconn->real_escape_string($string);
 	}
 }
-$sql = new SQL('','','','');
-$sql->select_db('');
+require('db_init.php');
 ?>

@@ -1,0 +1,4 @@
+<?php
+$sql = new SQL('server', 'username', 'password', '');
+$sql->select_db('database');
+?>
