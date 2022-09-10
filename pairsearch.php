@@ -1,5 +1,5 @@
 <?php
-require('db.php');
+require('private/db.php');
 ?>
 <!DOCTYPE html>
 <html>
