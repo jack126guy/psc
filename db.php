@@ -2,8 +2,9 @@
 class SQL {
 	private $mysqliconn;
 	private $tblprfx;
-	function __construct($hostname, $username, $password, $tableprefix) {
+	function __construct($hostname, $username, $password, $dbname, $tableprefix) {
 		$this->mysqliconn = new mysqli($hostname, $username, $password);
+		$this->select_db($dbname);
 		$this->tblprfx = $tableprefix;
 	}
 	function select_db($dbname) {
