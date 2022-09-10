@@ -22,8 +22,8 @@ class SQL {
 	function error() {
 		return $this->mysqliconn->error;
 	}
-	function get_table_prefix() {
-		return $this->tblprfx;
+	function format_table_name($table) {
+		return $this->tblprfx . $table;
 	}
 	function real_escape_string($string) {
 		return $this->mysqliconn->real_escape_string($string);

@@ -24,15 +24,15 @@ require('db.php');
 			//attempt to treat the first i characters as prefix
 			for($i=1; $i<strlen($_GET['name'])+1; $i++) {
 				//search preferred and alternate prefixes
-				$prefpfixquery = $sql->query('SELECT charname, charprefixpref FROM ' . $sql->get_table_prefix() . 'characters WHERE charprefixpref LIKE "' . $sql->real_escape_string(substr($_GET['name'], 0, $i)) . '%"');
-				$altpfixquery = $sql->query('SELECT charname, charprefixalt FROM ' . $sql->get_table_prefix() . 'characters WHERE charprefixalt LIKE "' . $sql->real_escape_string(substr($_GET['name'], 0, $i)) . '%"');
+				$prefpfixquery = $sql->query('SELECT charname, charprefixpref FROM ' . $sql->format_table_name('characters') . ' WHERE charprefixpref LIKE "' . $sql->real_escape_string(substr($_GET['name'], 0, $i)) . '%"');
+				$altpfixquery = $sql->query('SELECT charname, charprefixalt FROM ' . $sql->format_table_name('characters') . ' WHERE charprefixalt LIKE "' . $sql->real_escape_string(substr($_GET['name'], 0, $i)) . '%"');
 				if($sql->error()) {
 					echo '<p>Error: ' . $sql->error() . '</p>';
 					return;
 				}
 				//search suffixes with preferred prefixes
 				while($pfixrow = $sql->fetch_assoc($prefpfixquery)) {
-					$sfixquery = $sql->query('SELECT charname, charsuffix FROM ' . $sql->get_table_prefix() . 'characters WHERE charsuffix LIKE "' . $sql->real_escape_string(substr($_GET['name'], $i)) . '%" AND needsprefixalt = 0 AND charname != "' . $pfixrow['charname'] . '"');
+					$sfixquery = $sql->query('SELECT charname, charsuffix FROM ' . $sql->format_table_name('characters') . ' WHERE charsuffix LIKE "' . $sql->real_escape_string(substr($_GET['name'], $i)) . '%" AND needsprefixalt = 0 AND charname != "' . $pfixrow['charname'] . '"');
 					if($sql->error()) {
 						echo '<p>Error: ' . $sql->error() . '</p>';
 						return;
@@ -43,7 +43,7 @@ require('db.php');
 				}
 				//search suffixes with alternate prefixes
 				while($pfixrow = $sql->fetch_assoc($altpfixquery)) {
-					$sfixquery = $sql->query('SELECT charname, charsuffix FROM ' . $sql->get_table_prefix() . 'characters WHERE charsuffix LIKE "' . $sql->real_escape_string(substr($_GET['name'], $i)) . '%" AND needsprefixalt = 1 AND charname != "' . $pfixrow['charname'] . '"');
+					$sfixquery = $sql->query('SELECT charname, charsuffix FROM ' . $sql->format_table_name('characters') . ' WHERE charsuffix LIKE "' . $sql->real_escape_string(substr($_GET['name'], $i)) . '%" AND needsprefixalt = 1 AND charname != "' . $pfixrow['charname'] . '"');
 					if($sql->error()) {
 						echo '<p>Error: ' . $sql->error() . '</p>';
 						return;

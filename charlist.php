@@ -8,7 +8,7 @@ require('db.php');
 	</head>
 	<body>
 		<?php
-		$query = $sql->query('SELECT * FROM ' . $sql->get_table_prefix(). 'characters;');
+		$query = $sql->query('SELECT * FROM ' . $sql->format_table_name('characters') . ';');
 		if($sql->error()) {
 			echo 'Error: ' . $sql->error();
 		} else {
