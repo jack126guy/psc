@@ -8,9 +8,14 @@ class SQL {
 		$this->tblprfx = $tableprefix;
 	}
 	function query($qstring, $params = array()) {
-		$statement = $this->conn->query($qstring);
+		$statement = $this->conn->prepare($qstring);
 		if(!$statement) {
 			$this->errstr = implode(' ', $this->conn->errorInfo());
+			return NULL;
+		}
+		$execresult = $statement->execute($params);
+		if(!$execresult) {
+			$this->errstr = implode(' ', $statement->errorInfo());
 			return NULL;
 		}
 		return $statement;
@@ -26,10 +31,6 @@ class SQL {
 	}
 	function format_table_name($table) {
 		return $this->tblprfx . $table;
-	}
-	function real_escape_string($string) {
-		// Really bad hack, this will be replaced with prepared statements
-		return trim($this->conn->quote($string), '"\'');
 	}
 }
 require('db_init.php');

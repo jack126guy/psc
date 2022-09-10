@@ -17,12 +17,12 @@ require('private/db.php');
 					return;
 				}
 				//obtain affixes from database
-				$char1query = $sql->query('SELECT * FROM ' . $sql->format_table_name('characters') . ' WHERE charname = "' . $sql->real_escape_string($_GET['char1']) . '";');
+				$char1query = $sql->query('SELECT * FROM ' . $sql->format_table_name('characters') . ' WHERE charname = ?;', array($_GET['char1']));
 				if($sql->error()) {
 					echo 'Error: ' . $sql->error();
 					return;
 				}
-				$char2query = $sql->query('SELECT * FROM ' . $sql->format_table_name('characters') . ' WHERE charname = "' . $sql->real_escape_string($_GET['char2']) . '";');
+				$char2query = $sql->query('SELECT * FROM ' . $sql->format_table_name('characters') . ' WHERE charname = ?;', array($_GET['char2']));
 				if($sql->error()) {
 					echo 'Error: ' . $sql->error();
 					return;
