@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Name Queries - Pony Shipping Catalog</title>
+	</head>
+	<body>
+		<h1>Character List</h1>
+		<p><a href="charlist.php">List</a></p>
+
+		<h1>Get Name from Characters</h1>
+		<p>Note: You have to enter the names exactly as they appear in the list.</p>
+		<form method="get" action="pairname.php">
+			<label for="pairname-char1">Character 1</label>
+			<input type="text" id="pairname-char1" name="char1"/>
+			<label for="pairname-char2">Character 2</label>
+			<input type="text" id="pairname-char1" name="char2"/>
+			<button type="submit">Get Name</button>
+		</form>
+
+		<h1>Search Pair Names</h1>
+		<form method="get" action="pairsearch.php">
+			<label for="pairsearch-name">Name</label>
+			<input type="text" id="pairsearch-name" name="name"/>
+			<button type="submit">Search</button>
+		</form>
+	</body>
+</html>
