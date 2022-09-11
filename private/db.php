@@ -20,9 +20,6 @@ class SQL {
 		}
 		return $statement;
 	}
-	function num_rows($result) {
-		return $result->rowCount();
-	}
 	function fetch_assoc($result) {
 		return $result->fetch(PDO::FETCH_ASSOC);
 	}

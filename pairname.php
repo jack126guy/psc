@@ -27,12 +27,12 @@ require('private/db.php');
 					echo 'Error: ' . $sql->error();
 					return;
 				}
-				if($sql->num_rows($char1query) == 0 || $sql->num_rows($char2query) == 0) {
+				$char1row = $sql->fetch_assoc($char1query);
+				$char2row = $sql->fetch_assoc($char2query);
+				if(!$char1row || !$char2row) {
 					echo 'Character(s) not found.';
 					return;
 				}
-				$char1row = $sql->fetch_assoc($char1query);
-				$char2row = $sql->fetch_assoc($char2query);
 				//create pair name
 				if($char2row['needsprefixalt']) {
 					$pairname = $char1row['charprefixalt'];
