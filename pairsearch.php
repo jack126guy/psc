@@ -20,19 +20,19 @@ require('private/db.php');
 			//attempt to treat the first i characters as prefix
 			for($i=1; $i<strlen($_GET['name'])+1; $i++) {
 				//search preferred and alternate prefixes
-				$prefpfixquery = $sql->query('SELECT charname, charprefixpref FROM ' . $sql->format_table_name('characters') . ' WHERE charprefixpref LIKE ?;', array(substr($_GET['name'], 0, $i) . '%'));
+				$prefpfixquery = $sql->query('SELECT charname, charprefixpref FROM ' . $sql->format_table_name('characters') . ' WHERE charprefixpref LIKE ? ESCAPE \'\'\'\';', array(likeescape(substr($_GET['name'], 0, $i)) . '%'));
 				if($sql->error()) {
 					echo '<p>Error: ' . $sql->error() . '</p>';
 					return;
 				}
-				$altpfixquery = $sql->query('SELECT charname, charprefixalt FROM ' . $sql->format_table_name('characters') . ' WHERE charprefixalt LIKE ?;', array(substr($_GET['name'], 0, $i) . '%'));
+				$altpfixquery = $sql->query('SELECT charname, charprefixalt FROM ' . $sql->format_table_name('characters') . ' WHERE charprefixalt LIKE ? ESCAPE \'\'\'\';', array(likeescape(substr($_GET['name'], 0, $i)) . '%'));
 				if($sql->error()) {
 					echo '<p>Error: ' . $sql->error() . '</p>';
 					return;
 				}
 				//search suffixes with preferred prefixes
 				while($pfixrow = $sql->fetch_assoc($prefpfixquery)) {
-					$sfixquery = $sql->query('SELECT charname, charsuffix FROM ' . $sql->format_table_name('characters') . ' WHERE charsuffix LIKE ? AND needsprefixalt = 0 AND charname != ?;', array(substr($_GET['name'], $i) . '%', $pfixrow['charname']));
+					$sfixquery = $sql->query('SELECT charname, charsuffix FROM ' . $sql->format_table_name('characters') . ' WHERE charsuffix LIKE ? ESCAPE \'\'\'\' AND needsprefixalt = 0 AND charname != ?;', array(likeescape(substr($_GET['name'], $i)) . '%', $pfixrow['charname']));
 					if($sql->error()) {
 						echo '<p>Error: ' . $sql->error() . '</p>';
 						return;
@@ -43,7 +43,7 @@ require('private/db.php');
 				}
 				//search suffixes with alternate prefixes
 				while($pfixrow = $sql->fetch_assoc($altpfixquery)) {
-					$sfixquery = $sql->query('SELECT charname, charsuffix FROM ' . $sql->format_table_name('characters') . ' WHERE charsuffix LIKE ? AND needsprefixalt = 1 AND charname != ?;', array(substr($_GET['name'], $i) . '%', $pfixrow['charname']));
+					$sfixquery = $sql->query('SELECT charname, charsuffix FROM ' . $sql->format_table_name('characters') . ' WHERE charsuffix LIKE ? ESCAPE \'\'\'\' AND needsprefixalt = 1 AND charname != ?;', array(likeescape(substr($_GET['name'], $i)) . '%', $pfixrow['charname']));
 					if($sql->error()) {
 						echo '<p>Error: ' . $sql->error() . '</p>';
 						return;
@@ -60,6 +60,9 @@ require('private/db.php');
 				echo '<tr><td>' . $resultrow['shipname'] . '</td><td>' . $resultrow['char1'] . ' x ' . $resultrow['char2'] . '</td></tr>';
 			}
 			echo '</table>';
+		}
+		function likeescape($string) {
+			return str_replace(array('%', '_'), array('\\%', '\\_'), $string);
 		}
 		?>
 	</body>
