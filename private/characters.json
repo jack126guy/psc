@@ -1,0 +1,114 @@
+[
+	{
+		"charname": "Twilight Sparkle",
+		"charprefixpref": "Twi",
+		"charprefixalt": "Twil",
+		"charsuffix": "light",
+		"needsprefixalt": false
+	},
+	{
+		"charname": "Rainbow Dash",
+		"charprefixpref": "Rainbow",
+		"charprefixalt": "Rainbow",
+		"charsuffix": "dash",
+		"needsprefixalt": false
+	},
+	{
+		"charname": "Pinkie Pie",
+		"charprefixpref": "Pinkie",
+		"charprefixalt": "Pink",
+		"charsuffix": "pie",
+		"needsprefixalt": false
+	},
+	{
+		"charname": "Rarity",
+		"charprefixpref": "Rari",
+		"charprefixalt": "Rar",
+		"charsuffix": "ity",
+		"needsprefixalt": true
+	},
+	{
+		"charname": "Applejack",
+		"charprefixpref": "Apple",
+		"charprefixalt": "Appl",
+		"charsuffix": "jack",
+		"needsprefixalt": false
+	},
+	{
+		"charname": "Fluttershy",
+		"charprefixpref": "Flutter",
+		"charprefixalt": "Flutter",
+		"charsuffix": "shy",
+		"needsprefixalt": false
+	},
+	{
+		"charname": "Celestia",
+		"charprefixpref": "Celesti",
+		"charprefixalt": "Celest",
+		"charsuffix": "lestia",
+		"needsprefixalt": false
+	},
+	{
+		"charname": "Luna",
+		"charprefixpref": "Luna",
+		"charprefixalt": "Lun",
+		"charsuffix": "luna",
+		"needsprefixalt": false
+	},
+	{
+		"charname": "Cadance",
+		"charprefixpref": "Cadan",
+		"charprefixalt": "Cadan",
+		"charsuffix": "dance",
+		"needsprefixalt": false
+	},
+	{
+		"charname": "Chrysalis",
+		"charprefixpref": "Chrysa",
+		"charprefixalt": "Chrysal",
+		"charsuffix": "lis",
+		"needsprefixalt": false
+	},
+	{
+		"charname": "Vinyl Scratch",
+		"charprefixpref": "Vinyl",
+		"charprefixalt": "Vinyl",
+		"charsuffix": "scratch",
+		"needsprefixalt": false
+	},
+	{
+		"charname": "Lyra",
+		"charprefixpref": "Lyra",
+		"charprefixalt": "Lyr",
+		"charsuffix": "lyra",
+		"needsprefixalt": false
+	},
+	{
+		"charname": "Bon Bon",
+		"charprefixpref": "Bon",
+		"charprefixalt": "Bon",
+		"charsuffix": "bon",
+		"needsprefixalt": false
+	},
+	{
+		"charname": "Discord",
+		"charprefixpref": "Disco",
+		"charprefixalt": "Dis",
+		"charsuffix": "cord",
+		"needsprefixalt": false
+	},
+	{
+		"charname": "Octavia",
+		"charprefixpref": "Octa",
+		"charprefixalt": "Oct",
+		"charsuffix": "tavia",
+		"needsprefixalt": false
+	},
+	{
+		"charname": "Trixie",
+		"charprefixpref": "Trixie",
+		"charprefixalt": "Trix",
+		"charsuffix": "xie",
+		"needsprefixalt": false
+	}
+]

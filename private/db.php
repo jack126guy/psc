@@ -3,8 +3,8 @@ class SQL {
 	private $conn;
 	private $errstr;
 	private $tblprfx;
-	function __construct($hostname, $username, $password, $dbname, $tableprefix) {
-		$this->conn = new PDO('mysql:host=' . $hostname . ';dbname=' . $dbname, $username, $password);
+	function __construct($dsn, $username = NULL, $password = NULL, $options = NULL, $tableprefix = '') {
+		$this->conn = new PDO($dsn, $username, $password, $options);
 		$this->tblprfx = $tableprefix;
 	}
 	function query($qstring, $params = array()) {
